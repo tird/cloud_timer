@@ -9,7 +9,7 @@ angular.module('timerApp').controller('TodoController', ['$scope', 'TasksService
 
 	$scope.addTodo = function() {
 		TasksService.addTodo($scope.todo);
-		LogsService.addLog($scope.newTask, $route, $location);
+		LogsService.addLog($scope.todo, $route, $location);
 		$scope.todo = {};
 	};
 	
