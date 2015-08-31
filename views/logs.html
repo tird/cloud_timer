@@ -1,0 +1,87 @@
+<div ng-controller="LogsController" layout-fill layout="column" >
+    <md-toolbar class="md-whiteframe-glow-z1 site-content-toolbar md-grey-theme">
+        <section class="inset md-toolbar-tools" layout="row" layout-align="start">
+            <md-input-container flex offset="50">
+                <label>Group</label>
+                <md-select ng-model="ctrl.userState">
+                    <md-option value="{{}}}">{{}}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-button class="md-icon-button md-primary"><md-icon md-font-set="material-icons">cached</md-icon></md-button>
+            <md-input-container md-theme="input" flex>
+                <label>&nbsp;</label>
+                <input ng-model="search.who">
+            </md-input-container>
+            <md-button class="md-icon-button md-primary"><md-icon md-font-set="material-icons">search</md-icon></md-button>
+        </section>
+    </md-toolbar>
+
+    <md-content layout="row" layout-align="center ">
+        <md-list flex class="md-list-margin">
+            <md-list-item>
+                <div flex="5"><h3>ID</h3></div>
+                <div flex="10" class="md-align-c"><h3>Name</h3></div>
+                <div flex="10" class="md-align-c"><h3>Timer type</h3></div>
+                <div flex="10" class="md-align-c"><h3>Template url</h3></div>
+                <div flex="10" class="md-align-c"><h3>Controller</h3></div>
+                <div flex="15" class="md-align-c"><h3>Location</h3></div>
+				<div flex="15" class="md-align-c"><h3>Date</h3></div>
+            </md-list-item>
+            <!--Start Repeat-->
+            <div ng-repeat="log in logs track by $index">
+                <md-divider ></md-divider>
+                <md-list-item class="" layout-padding="10">
+                    <div flex="5">{{log.id}}</div>
+                    <div flex="10" class="md-align-c">{{log.name}}</div>
+                    <div flex="10" class="md-align-c">{{log.timerType}}</div>
+                    <div flex="10" class="md-align-c">{{log.templateUrl}}</div>
+                    <div flex="10" class="md-align-c">{{log.controller}}</div>
+                    <div flex="15" class="md-align-c">{{log.loc}}</div>
+					<div flex="15" class="md-align-c">{{log.date}}</div>
+					
+                    <div flex="10" class="md-align-r">
+                        <md-button class="md-icon-button md-primary inset"><md-icon md-font-set="material-icons">menu</md-icon></md-button>
+                        <md-button class="md-icon-button md-warn inset" ng-click="deleteLog($index)"><md-icon md-font-set="material-icons">close</md-icon></md-button>
+                    </div>
+                </md-list-item>
+            </div>
+            <!--End Repeat-->
+            <md-divider ></md-divider>
+            <md-list-item layout-padding="10">
+                <div flex="25"><h3>Total</h3></div>
+                <div flex="15"><h3>Time</h3></div>
+                <div flex="15"></div>
+                <div flex="25"></div>
+                <div flex="20" class="md-align-r">
+                    <md-button onclick="$('#logs').tableExport({type:'excel',escape:'false'});" class="md-icon-button md-primary inset"><md-icon md-font-set="material-icons">file_download</md-icon></md-button>
+                    <md-button ng-click="deleteAllLogs()" class="md-icon-button md-warn inset"><md-icon md-font-set="material-icons">close</md-icon></md-button>
+                </div>
+            </md-list-item>
+        </md-list>
+        
+    <table id="logs" class="table table-striped" style="visibility:hidden; position:absolute;" >
+	<thead>			
+		<tr class='warning'>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Timer type</th>
+			<th>Template url</th>
+			<th>Controller</th>
+			<th>Location</th>
+			<th>Date</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="log in logs track by $index">
+        <td>{{log.id}}</td>
+        <td>{{log.name}}</td>
+        <td>{{log.timerType}}</td>
+        <td>{{log.templateUrl}}</td>
+        <td>{{log.controller}}</td>
+        <td>{{log.loc}}</td>
+        <td>{{log.date}}</td>
+		</tr>
+	</tbody>
+</table>
+    </md-content>
+</div>
