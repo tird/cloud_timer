@@ -10,11 +10,11 @@ angular.module('timerApp').service('LogsService', function(){
 		 this.log = {
              id: 1
          }
-		var tempId = angular.fromJson(localStorage.getItem('logs'));
+	var tempId = angular.fromJson(localStorage.getItem('logs'));
         if (tempId !== null ){
             if(tempId.length !== 0){
-            tempId = tempId[tempId.length-1].id + 1;
-		    this.log.id = tempId;
+            	tempId = tempId[tempId.length-1].id + 1;
+		this.log.id = tempId;
             }
 		}
         if (task.goal !== ''){
@@ -45,7 +45,7 @@ angular.module('timerApp').service('LogsService', function(){
 		this.logs.splice(index,1);
 		localStorage.setItem('logs', angular.toJson(this.logs));
 	}
-    this.deleteAllLogs = function(){
+	this.deleteAllLogs = function(){
         this.logs.splice(0,this.logs.length);
 		localStorage.setItem('logs', angular.toJson(this.logs));
 	}
