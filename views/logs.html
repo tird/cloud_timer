@@ -20,6 +20,7 @@
         <md-list flex class="md-list-margin">
             <md-list-item>
                 <div flex="5"><h3>ID</h3></div>
+                <div flex="10" class="md-align-c"><h3>Operation type</h3></div>
                 <div flex="10" class="md-align-c"><h3>Name</h3></div>
                 <div flex="10" class="md-align-c"><h3>Timer type</h3></div>
                 <div flex="10" class="md-align-c"><h3>Template url</h3></div>
@@ -33,14 +34,14 @@
                 <md-list-item class="" layout-padding="10">
                     <div flex="5">{{log.id}}</div>
                     <div flex="10" class="md-align-c">{{log.name}}</div>
+                    <div flex="10" class="md-align-c">{{log.name}}</div>
                     <div flex="10" class="md-align-c">{{log.timerType}}</div>
                     <div flex="10" class="md-align-c">{{log.templateUrl}}</div>
                     <div flex="10" class="md-align-c">{{log.controller}}</div>
                     <div flex="15" class="md-align-c">{{log.loc}}</div>
 					<div flex="15" class="md-align-c">{{log.date}}</div>
 					
-                    <div flex="10" class="md-align-r">
-                        <md-button class="md-icon-button md-primary inset"><md-icon md-font-set="material-icons">menu</md-icon></md-button>
+                    <div flex="5" class="md-align-r">
                         <md-button class="md-icon-button md-warn inset" ng-click="deleteLog($index)"><md-icon md-font-set="material-icons">close</md-icon></md-button>
                     </div>
                 </md-list-item>
@@ -58,8 +59,8 @@
                 </div>
             </md-list-item>
         </md-list>
-        
-    <table id="logs" class="table table-striped" style="visibility:hidden; position:absolute;" >
+    </md-content>
+    <table id="logs" class="table table-striped" style="visibility:hidden; position:fixed;" >
 	<thead>			
 		<tr class='warning'>
 			<th>ID</th>
@@ -83,5 +84,4 @@
 		</tr>
 	</tbody>
 </table>
-    </md-content>
 </div>
